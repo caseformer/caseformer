@@ -6,35 +6,41 @@
 
 
 ### Some notes about this anonymous repository
-**This GitHub repository has been anonymized.**
-**The core code of this paper are publicly available in this GitHub repository. As the paper is currently under submission, once it is accepted, we will disclose the complete code and data in this repository.**
-**Some of the code in this repository involves absolute paths. Once the paper is accepted, we will make all the files corresponding to these paths publicly available.**
+- **This GitHub repository has been anonymized.**
+
+- **The core code of this paper is publicly available in this GitHub repository. As the paper is currently under submission, once it is accepted, we will disclose the complete code and data in this repository.**
+- **Some of the code in this repository involves absolute paths. Once the paper is accepted, we will make all the files corresponding to these paths publicly available.**
 
 ### The file structure of this repository:
 
 ```
 .
-├── demo_data
-│   ├── legal_documents
-│   │   ├── legal_documents.jsonl
-│   │   └── file_format.txt
-│   └── preprocessed_training_data
-│       ├── LJP_task.jsonl
-│       ├── FDM_task.jsonl
-│       └── file_format.txt
-├── data_preprocess
-│   ├── law_article_extration.py
-│   └── crime_extraction.py
-├── pre-training_data_generation
-│   ├── demo_data
-│   │   ├── bm25_top100.jsonl
-│   │   ├── extracted_law_articles.jsonl
-│   │   └── extracted_crimes.jsonl
-│   ├── generate_LJP_task_data.py
-│   ├── generate_FDM_task_data.py
-│   └── calc_LP-ICF_score.py
-├── pre-training
-│   └── pre-train.sh
+└── caseformer
+    ├── data_preprocess
+    │   ├── crime_extraction.py
+    │   └── law_article_extration.py
+    ├── demo_data
+    │   ├── legal_documents
+    │   │   ├── file_format.txt
+    │   │   └── legal_documents.jsonl
+    │   └── preprocessed_training_data
+    │       ├── FDM_task.jsonl
+    │       ├── file_format.txt
+    │       └── LJP_task.jsonl
+    ├── pre-training
+    │   ├── pre-train_reranker.sh
+    │   └── pre-train_retriever.sh
+    ├── pre-training_data_generation
+    │   ├── calc_LP-ICF_score.py
+    │   ├── demo_data
+    │   │   ├── bm25_top100.jsonl
+    │   │   ├── extracted_crimes.jsonl
+    │   │   ├── extracted_law_articles.jsonl
+    │   │   └── LP-ICF_top100.jsonl
+    │   ├── generate_FDM_task_data.py
+    │   └── generate_LJP_task_data.py
+    ├── README.md
+    └── requirements.txt
 
 ```
 
@@ -93,8 +99,6 @@ Format of the input documents:
 
 
 
-
-
 ### Prepare the Training Data
 
 #### LJP Task
@@ -120,58 +124,4 @@ python ./pre-training_data_generation/generate_FDM_task_data.py \
 
 
 ### Running Pre-training
-#### Pre-train Caseformer_retriever
-```
-cd caseformer
-bash ./pre-training/pre-train_retriever.sh
-```
-
-shell script:
-```
-CUDA_VISIBLE_DEVICES=6 python /home/swh/dense/projects/tensorboard_dense/src/dense/driver/train_with_tensorboard.py \
-  --output_dir /home/swh/dense/projects/tensorboard_dense/ckpts/finetune_roberta2 \
-  --model_name_or_path /home/swh/huggingface_models/chinese_roberta \
-  --do_train \
-  --save_steps 1000 \
-  --train_dir /home/swh/legal/project/sigir/dense/finetune_dense/train_data \
-  --tokenizer_name /home/swh/huggingface_models/chinese_roberta \
-  --fp16 \
-  --per_device_train_batch_size 1 \
-  --learning_rate 5e-6 \
-  --num_train_epochs 5 \
-  --train_n_passages 40 \
-  --overwrite_output_dir \
-  --dataloader_num_workers 16 \
-  --inference_result_path /home/swh/dense/projects/tensorboard_dense/codes/data/finetune_roberta2 \
-  --inference_in_path /home/swh/dense/projects/tensorboard_dense/codes/lecard/data/recall_inf_without_train.json \
-  --tensorboard_path /home/swh/dense/projects/tensorboard_dense/tensorboard/finetune_roberta2
-```
-
-
-#### Pre-train Caseformer_reranker
-```
-cd caseformer
-bash ./pre-training/pre-train_reranker.sh
-```
-
-shell script:
-```
-CUDA_VISIBLE_DEVICES=6 python /home/swh/dense/projects/tensorboard_dense/src/dense/driver/train_with_tensorboard.py \
-  --output_dir /home/swh/dense/projects/tensorboard_dense/ckpts/finetune_roberta2 \
-  --model_name_or_path /home/swh/huggingface_models/chinese_roberta \
-  --do_train \
-  --save_steps 1000 \
-  --train_dir /home/swh/legal/project/sigir/dense/finetune_dense/train_data \
-  --tokenizer_name /home/swh/huggingface_models/chinese_roberta \
-  --fp16 \
-  --per_device_train_batch_size 1 \
-  --learning_rate 5e-6 \
-  --num_train_epochs 5 \
-  --train_n_passages 40 \
-  --overwrite_output_dir \
-  --dataloader_num_workers 16 \
-  --inference_result_path /home/swh/dense/projects/tensorboard_dense/codes/data/finetune_roberta2 \
-  --inference_in_path /home/swh/dense/projects/tensorboard_dense/codes/lecard/data/recall_inf_without_train.json \
-  --tensorboard_path /home/swh/dense/projects/tensorboard_dense/tensorboard/finetune_roberta2
-```
-
+We will disclose the complete code and data in this repository.
