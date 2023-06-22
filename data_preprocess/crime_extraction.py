@@ -308,7 +308,7 @@ writer = open('./id_anyou.json','w')
 
 
 
-file = '/home/swh/legal/crime_data_xf/crime_data+article'
+file = '/home/user_name/legal/crime_data_xf/crime_data+article'
 
 ids = set()
 

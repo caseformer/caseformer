@@ -16,7 +16,7 @@ import numpy as np
 print('reading anyou')
 id_anyou = {}
 anyoulist_ids = defaultdict(list)
-with open('/home/swh/legal/project/caseformer/gen_anyou/id_anyou.json') as f:
+with open('/home/user_name/legal/project/caseformer/gen_anyou/id_anyou.json') as f:
     lines = f.read().split('\n')
     for line in tqdm(lines):
         if not line: continue
@@ -32,13 +32,13 @@ print(f'len anyou:{len(id_anyou)}')
 
 # read the xf to generate pos and neg examples
 print('reading id_xf...')
-qid_xf = json.loads(open('/home/swh/legal/project/pretrain_legal/process/cat_512/calc_statistics/id_xf.json').read())
+qid_xf = json.loads(open('/home/user_name/legal/project/pretrain_legal/process/cat_512/calc_statistics/id_xf.json').read())
 
 
 
 
 xf_IPF = {}
-with open('/home/swh/legal/project/caseformer/1208_new/data/IPF.csv') as f:
+with open('/home/user_name/legal/project/caseformer/1208_new/data/IPF.csv') as f:
     lines = f.read().split('\n')
     for line in tqdm(lines):
         if not line:continue
@@ -46,7 +46,7 @@ with open('/home/swh/legal/project/caseformer/1208_new/data/IPF.csv') as f:
         xf_IPF[int(xf)] = float(s_IPF)
 
 
-writer = open('/home/swh/legal/project/caseformer/IPF/data/qid_idx.csv','w')
+writer = open('/home/user_name/legal/project/caseformer/IPF/data/qid_idx.csv','w')
 
 all_vec=torch.zeros([4367284,507],dtype=torch.float16,device = device)
 
@@ -77,7 +77,7 @@ all_re = all_vec.permute(1,0)
 print(all_vec.size())
 print(all_re.size())
 
-writer_res = open('/home/swh/legal/project/caseformer/IPF/data/res.json','w')
+writer_res = open('/home/user_name/legal/project/caseformer/IPF/data/res.json','w')
 
 len = int(dim0/50)
 start_idx = 0
@@ -95,7 +95,7 @@ for i in tqdm(range(len)):
     
 torch.ran
 
-torch.save(res,'/home/swh/legal/project/caseformer/IPF/data/res.pt')
+torch.save(res,'/home/user_name/legal/project/caseformer/IPF/data/res.pt')
 
 
 

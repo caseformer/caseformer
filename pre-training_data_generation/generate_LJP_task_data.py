@@ -4,16 +4,16 @@ import random
 import os
 
 
-BM25_PATH = '/home/swh/legal/data/final_200.trec'
-BERT_ENCODED_CORPUS = '/home/swh/legal/project/pretrain_legal/data/encode_ultra/encoded_corpus.json'
-ROBERTA_ENCODED_CORPUS = '/home/swh/legal/project/pretrain_legal/data/encode_ultra/encoded_corpus_roberta.json'
+BM25_PATH = '/home/user_name/legal/data/final_200.trec'
+BERT_ENCODED_CORPUS = '/home/user_name/legal/project/pretrain_legal/data/encode_ultra/encoded_corpus.json'
+ROBERTA_ENCODED_CORPUS = '/home/user_name/legal/project/pretrain_legal/data/encode_ultra/encoded_corpus_roberta.json'
 
 
 input_encoded_corpus = BERT_ENCODED_CORPUS
 output_filename = '1003_released_anyou_mid_hard.json'
 
 
-OUTPUT_PATH = f'/home/swh/legal/project/caseformer/process/sampling_strategy/bert/data/{output_filename}'
+OUTPUT_PATH = f'/home/user_name/legal/project/caseformer/process/sampling_strategy/bert/data/{output_filename}'
 writer = open(OUTPUT_PATH, 'w')
 
 
@@ -21,7 +21,7 @@ writer = open(OUTPUT_PATH, 'w')
 print('reading crimes')
 id_anyou = {}
 
-with open('/home/swh/legal/project/caseformer/gen_anyou/id_anyou.json') as f:
+with open('/home/user_name/legal/project/caseformer/gen_anyou/id_anyou.json') as f:
     lines = f.read().split('\n')
     for line in tqdm(lines):
         if not line:continue
@@ -46,7 +46,7 @@ print(len(id_embedding))
 
 
 print('reading law articles...')
-qid_xf = json.loads(open('/home/swh/legal/project/pretrain_legal/process/cat_512/calc_statistics/id_xf.json').read())
+qid_xf = json.loads(open('/home/user_name/legal/project/pretrain_legal/process/cat_512/calc_statistics/id_xf.json').read())
 
 
 

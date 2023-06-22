@@ -7,14 +7,14 @@ from tqdm import tqdm
 read qid_xf
 '''
 print('reading id_xf...')
-qid_xf = json.loads(open('/home/swh/legal/project/pretrain_legal/process/cat_512/calc_statistics/id_xf.json').read())
+qid_xf = json.loads(open('/home/user_name/legal/project/pretrain_legal/process/cat_512/calc_statistics/id_xf.json').read())
 
 
 '''
 read qid_anyou
 '''
 id_anyou = {}
-with open('/home/swh/legal/project/caseformer/gen_anyou/id_anyou.json') as f:
+with open('/home/user_name/legal/project/caseformer/gen_anyou/id_anyou.json') as f:
     lines = f.read().split('\n')
     for line in tqdm(lines):
         if not line: continue
@@ -52,10 +52,10 @@ cnt_0anyou = 0
 total_pos = 0
 cnt_pos = 0
 cnt_total = 0
-writer = open('/home/swh/legal/project/caseformer/IPF/contrastive_learning/data/pos_neg.json2','w')
+writer = open('/home/user_name/legal/project/caseformer/IPF/contrastive_learning/data/pos_neg.json2','w')
 
 # qid_dids_scores = defaultdict(list)
-file = '/home/swh/legal/project/caseformer/IPF/contrastive_learning/verify/narrow_mistake/final'
+file = '/home/user_name/legal/project/caseformer/IPF/contrastive_learning/verify/narrow_mistake/final'
 for root, dirs, files in tqdm(os.walk(file)):
     for f in tqdm(files):
         path = os.path.join(root, f)
